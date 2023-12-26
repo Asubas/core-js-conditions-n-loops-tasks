@@ -71,8 +71,20 @@ function getMaxNumber(a, b, c) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  for (let i = 1; i <= 8; i += 1) {
+    if (
+      queen.x === king.x ||
+      queen.y === king.y ||
+      (queen.x + i === king.x && queen.y + i === king.y) ||
+      (queen.x - i === king.x && queen.y - i === king.y) ||
+      (queen.x - i === king.x && queen.y + i === king.y) ||
+      (queen.x + i === king.x && queen.y - i === king.y)
+    ) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
@@ -93,8 +105,13 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a + b > c && a + c > b && b + c > a && a > 0 && b > 0 && c > 0) {
+    if (a === b || a === c || b === c) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
