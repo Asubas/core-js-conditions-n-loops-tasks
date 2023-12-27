@@ -128,8 +128,24 @@ function isIsoscelesTriangle(a, b, c) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let result = '';
+  const tens = Math.floor(num / 10);
+  if (tens === 1) result += 'X';
+  if (tens === 2) result += 'XX';
+  if (tens === 3) result += 'XXX';
+
+  if (num % 10 === 1) result += 'I';
+  if (num % 10 === 2) result += 'II';
+  if (num % 10 === 3) result += 'III';
+  if (num % 10 === 4) result += 'IV';
+  if (num % 10 === 5) result += 'V';
+  if (num % 10 === 6) result += 'VI';
+  if (num % 10 === 7) result += 'VII';
+  if (num % 10 === 8) result += 'VIII';
+  if (num % 10 === 9) result += 'IX';
+
+  return result;
 }
 
 /**
@@ -147,8 +163,60 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let result = '';
+  let word = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    switch (numberStr[i]) {
+      case '0':
+        word = 'zero';
+        break;
+      case '-':
+        word = 'minus';
+        break;
+      case '1':
+        word = 'one';
+        break;
+      case '2':
+        word = 'two';
+        break;
+      case '3':
+        word = 'three';
+        break;
+      case '4':
+        word = 'four';
+        break;
+      case '5':
+        word = 'five';
+        break;
+      case '6':
+        word = 'six';
+        break;
+      case '7':
+        word = 'seven';
+        break;
+      case '8':
+        word = 'eight';
+        break;
+      case '9':
+        word = 'nine';
+        break;
+      case '.':
+        word = 'point';
+        break;
+      case ',':
+        word = 'point';
+        break;
+      default:
+        word = 'incorrect argument';
+    }
+    if (result !== '') {
+      result += ` ${word}`;
+    } else {
+      result += word;
+    }
+  }
+  return result;
 }
 
 /**
