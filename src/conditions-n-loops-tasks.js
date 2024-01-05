@@ -425,14 +425,14 @@ function rotateMatrix(matrix) {
  */
 function sortByAsc(arr) {
   const sortArr = arr;
-  for (let i = 0; i < sortArr.length - 1; i += 1) {
-    let min = i;
-    for (let j = i + 1; j < sortArr.length; j += 1) {
-      if (sortArr[j] < sortArr[min]) {
-        min = j;
-      }
+  for (let i = 0, l = sortArr.length; i < l; i += 1) {
+    const current = sortArr[i];
+    let j = i;
+    while (j > 0 && sortArr[j - 1] > current) {
+      sortArr[j] = sortArr[j - 1];
+      j -= 1;
     }
-    [sortArr[i], sortArr[min]] = [sortArr[min], sortArr[i]];
+    sortArr[j] = current;
   }
   return sortArr;
 }
